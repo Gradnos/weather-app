@@ -34,10 +34,11 @@ h1{
 
 label{
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 input{
-
     padding: 0.1rem 1rem;
     font-size: 1rem;
     font-weight: 300;
@@ -61,6 +62,38 @@ input::placeholder{
 
 input:focus{
     border: 0.1rem solid rgba(255, 255, 255, 0.8);
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+    outline-offset: 10px;
+}
+
+.search-button svg{
+    height: 1.5rem;
+    position: absolute;
+    fill: white;
+    left: 0.45rem;
+    top: 0.45rem;
+}
+
+.search-button{
+    position: relative;
+    border: 0.1rem solid white;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+    background: none;
+    outline: transparent;
+    margin: 0px 1rem;
+    transition: opacity 0.2s linear;
+}
+
+.search-button:hover{
+    opacity: 1;
+}
+
+.search-button:focus{
     outline: 1px solid rgba(255, 255, 255, 0.3);
     outline-offset: 10px;
 }
