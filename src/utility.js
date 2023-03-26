@@ -1,10 +1,8 @@
 
 
-let state = 0;
 
-let firstenter = true;
+let state = 0;
 export function transitionBodyBackground(gradient){
-    console.log("11");
     let body = document.querySelector("body");
     let overlay = document.querySelector(".bodyOverlayGradient");
 
@@ -17,7 +15,5 @@ export function transitionBodyBackground(gradient){
         body.style.backgroundImage = gradient;
         overlay.classList.remove("transitioning"); 
     }
-
-
-
+    
 }

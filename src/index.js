@@ -21,6 +21,8 @@ let gradients = {
     cloudydarkGradient : "linear-gradient(0deg, rgba(41,43,43,1) 0%, rgba(84,92,135,1) 100%)",
 }
 
+
+
 let gradientsArr = Object.values(gradients);
 
 
