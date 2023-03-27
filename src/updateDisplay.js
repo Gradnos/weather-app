@@ -40,17 +40,13 @@ export async function updateDisplay(cityName){
         } else {
             currentDegreeDom.innerText = tempF + "°";
         }
-        console.log(condition);
 
         currentConditionDom.innerText = condition;
         let dayTime 
         if(current.is_day === 1) dayTime = "day"; 
         else dayTime = "night";
 
-        console.log(dayTime);
-        console.log(icons[dayTime]);
-
-        currentIconDom.src = icons[dayTime][condition];
+        currentIconDom.src = icons[dayTime][condition.replaceAll(' ', '-')];
 
 
     }
