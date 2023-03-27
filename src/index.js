@@ -6,6 +6,13 @@ import { updateDisplay } from "./updateDisplay";
 
 transitionBodyBackground(gradientsArr[0]);
 
+console.log(gradientsArr[0]);
+
+export let prefersTempC = true;
+export function setPrefersTempC(boolean){
+    prefersTempC = boolean;
+}
+
 let button = document.querySelector("button");
 
 let i = 1;

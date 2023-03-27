@@ -26,7 +26,44 @@ body{
 }
 
 main{
+    display: flex;
     flex:1;
+    justify-content: space-between;
+    padding: 5vw;
+}
+
+.currentW-cont{
+    align-self: flex-start;
+}
+
+.one-line{
+    display: flex;
+    align-items: center;
+
+}
+
+.current-weather-icon{
+    position: relative;
+    top:1rem;
+    left: -1.5rem;
+    height: 10rem;
+    display: inline;
+    fill: white;
+}
+
+.city-name{
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+
+
+.current-weather-degree{
+    font-size: 10rem;
+    display: inline;
+}
+
+.current-condition{
+    font-size: 2rem;
 }
 
 footer{
@@ -49,6 +86,11 @@ a{
 a:hover{
     background-color: rgba(0, 0, 0, 0.4);
     border: 0.1rem solid rgba(255, 255, 255, 0);
+}
+
+a:focus{
+    outline: 1px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 3px;
 }
 
 nav{
@@ -100,7 +142,7 @@ input:focus{
 .search-button svg{
     height: 1.5rem;
     position: absolute;
-    fill: white;
+    fill: var(--fontcol);
     left: 0.45rem;
     top: 0.45rem;
 }
@@ -125,7 +167,7 @@ input:focus{
 }
 
 .search-button:focus{
-    outline: 1px solid rgba(255, 255, 255, 0.3);
+    outline: 1px solid rgba(255, 255, 255, 0.8);
     outline-offset: 10px;
 }
 
