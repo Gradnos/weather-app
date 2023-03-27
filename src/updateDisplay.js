@@ -1,5 +1,6 @@
 import * as weatherFetcher from './weatherFetcher.js';
 import { prefersTempC } from ".";
+import * as icons from './iconGetter.js';
 
 let weatherContainer = document.querySelector(".currentW-cont");
 let cityNameDom = weatherContainer.querySelector(".city-name");
@@ -15,11 +16,12 @@ export async function updateDisplay(cityName){
     let response = await weatherFetcher.fetchWeatherToday(cityName);
     if(response.ok){
         let data = response.data;
+
+        console.log(data);
         let location = data.location;
         let current = data.current;
 
         let condition = current.condition.text;
-        let icon = current.condition.icon;
 
         let cityName = location.name;
         let localTime = location.localtime.split(" ")[1];
@@ -41,8 +43,14 @@ export async function updateDisplay(cityName){
         console.log(condition);
 
         currentConditionDom.innerText = condition;
+        let dayTime 
+        if(current.is_day === 1) dayTime = "day"; 
+        else dayTime = "night";
 
-        currentIconDom.src = icon;
+        console.log(dayTime);
+        console.log(icons[dayTime]);
+
+        currentIconDom.src = icons[dayTime][condition];
 
 
     }
