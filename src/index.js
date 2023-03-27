@@ -8,33 +8,53 @@ transitionBodyBackground(gradientsArr[0]);
 
 console.log(gradientsArr[0]);
 
+let r = document.querySelector(':root');
+
+
+let toggleDom = document.querySelector(".preference-toggle"); 
 export let prefersTempC = true;
 export function setPrefersTempC(boolean){
     prefersTempC = boolean;
+
+    if(prefersTempC === true){
+        toggleDom.classList.remove("right");
+        toggleDom.innerText = "C";
+        r.style.setProperty("--degreePreference", '"C"');
+    }
+
+    if(prefersTempC === false){
+        toggleDom.classList.add("right");
+        toggleDom.innerText = "F";
+        r.style.setProperty("--degreePreference", '"F"');
+    }
 }
 
 let button = document.querySelector("button");
-
 let i = 1;
 button.addEventListener("click", () =>{
     transitionBodyBackground(gradientsArr[i]);
     i++;
 });
 
+
 let searchButton = document.querySelector(".search-button");
 let searchInput = document.querySelector("#search-input");
-
 searchInput.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
         searchButton.click();
     }
 });
-
 searchButton.addEventListener("click", ()=>{
     let cityName = searchInput.value;
     updateDisplay(cityName);
 });
 
+
+
+let changePrefersTempCButton = document.querySelector(".degree-preference-button");
+changePrefersTempCButton.addEventListener("click", ()=>{
+    setPrefersTempC(!prefersTempC);
+});
 
 
 
