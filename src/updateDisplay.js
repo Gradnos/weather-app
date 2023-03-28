@@ -47,6 +47,7 @@ export async function updateDisplay(cityName){
         else dayTime = "night";
 
         currentIconDom.src = icons[dayTime][condition.replaceAll(' ', '-')];
+        currentIconDom.alt = condition;
     } else{
 
     }
