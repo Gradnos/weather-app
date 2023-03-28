@@ -13,11 +13,11 @@ export async function updateDisplay(cityName){
 
 
 
-    let response = await weatherFetcher.fetchWeatherToday(cityName);
-    if(response.ok){
-        let data = response.data;
+    let forecastResponse = await weatherFetcher.fetchWeatherForecast(cityName);
 
-        console.log(data);
+    console.log(forecastResponse);
+    if(forecastResponse.ok){
+        let data = forecastResponse.data;
         let location = data.location;
         let current = data.current;
 
@@ -47,8 +47,7 @@ export async function updateDisplay(cityName){
         else dayTime = "night";
 
         currentIconDom.src = icons[dayTime][condition.replaceAll(' ', '-')];
-
+    } else{
 
     }
-
 }

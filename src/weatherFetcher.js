@@ -1,9 +1,6 @@
 import { KEY } from "./API-keys";
 import { catchEm } from "./utility";
 
-
-  
-
 const weatherBaseUrl = 'http://api.weatherapi.com/v1/';
 
 
@@ -16,8 +13,6 @@ export async function fetchWeatherToday(cityName){
     let ok = response.ok;
     return {ok, data};
 }
-
-
 
 export async function fetchWeatherForecast(cityName){
     const response = await fetch(`${weatherBaseUrl}forecast.json?key=${KEY}&q=${cityName}&days=7`);

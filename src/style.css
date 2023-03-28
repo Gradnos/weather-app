@@ -76,7 +76,7 @@ main{
     width: 4rem;
     position: relative;
     border: 0.1rem solid white;
-    opacity: 0.8;
+    opacity: 0.5;
     display: flex;
     align-items: center;
     height: 2.5rem;
@@ -166,9 +166,7 @@ input{
     border-radius: 4rem;
     border: 0.1rem solid rgba(255, 255, 255, 0.5);
     background-color: rgba(0, 0, 0, 0.1);
-    transition: border 0.1s linear;
-    transition: outline-offset 0.2s linear;
-    transition: outline 0.2s linear;
+    transition: all 0.2s linear;
 }
 
 
@@ -178,11 +176,16 @@ input::placeholder{
     opacity: 0.7;
 }
 
+input:hover{
+    border: 0.1rem solid rgba(255, 255, 255, 0.8);
+}
+
 input:focus{
     border: 0.1rem solid rgba(255, 255, 255, 0.8);
     outline: 1px solid rgba(255, 255, 255, 0.3);
     outline-offset: 10px;
 }
+
 
 .search-button svg{
     height: 1.5rem;
@@ -208,6 +211,7 @@ input:focus{
 }
 
 button:hover{
+    cursor: pointer;
     opacity: 1;
 }
 
@@ -234,6 +238,54 @@ button:focus{
 
 .bodyOverlayGradient.transitioning{
     opacity: 1;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-self: stretch;
+}
+
+.details-buttons{
+    box-sizing: border-box;
+    display: flex;
+    align-self: flex-start;
+    padding: 0.5rem;
+}
+
+.details-buttons button{
+    border: 0.0rem solid rgba(255, 255, 255, 0.0);
+    opacity: 0.8;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: transparent;
+    margin: 0px 0.2rem;
+    padding: 0.2rem 0.5rem;
+    transition: opacity 0.2s linear;
+    transition: background-color 0.2s linear;
+}
+
+.details-buttons button:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+.details-buttons button.selected{
+    opacity: 1;
+    border: 0.1rem solid rgba(255, 255, 255, 1);
+}
+
+.details-cont{
+    box-sizing: border-box;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 
