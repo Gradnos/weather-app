@@ -12,6 +12,8 @@ let r = document.querySelector(':root');
 
 
 let toggleDom = document.querySelector(".preference-toggle"); 
+
+
 export let prefersTempC = true;
 export function setPrefersTempC(boolean){
     prefersTempC = boolean;
@@ -28,6 +30,13 @@ export function setPrefersTempC(boolean){
         r.style.setProperty("--degreePreference", '"F"');
     }
 }
+
+
+export let moreInformationType = "hourly";
+export function setMoreInformationType(string){
+    moreInformationType = string;
+}
+
 
 let button = document.querySelector("button");
 let i = 1;

@@ -294,8 +294,8 @@ button:focus{
 .weather-cont{
     position: relative;
     overflow-wrap:break-word;
-    width: 6rem;
-    height: 4rem;
+    width: 6.1rem;
+    height: 5rem;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -327,8 +327,9 @@ button:focus{
 }
 
 .degrees-small{
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
+    opacity: 0.5;
 }
 
 .hover-condition{
@@ -338,12 +339,15 @@ button:focus{
     position: absolute;
     border-radius: 1rem;
     bottom: -0.2rem;
-    transform: translateY(100%);
+    transform: translate(50%, 100%);
     text-align: center;
     text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.651);
     padding: 0.5rem;
     opacity: var(--hover-opacity);
+
+    right: 50%;
+
 
 }
 
