@@ -14,6 +14,13 @@ let r = document.querySelector(':root');
 let toggleDom = document.querySelector(".preference-toggle"); 
 
 
+export let currentCity = "tbilisi"; 
+export function setCurrentCity(city){
+    currentCity = city;
+}
+
+
+
 export let prefersTempC = true;
 export function setPrefersTempC(boolean){
     prefersTempC = boolean;
@@ -29,6 +36,8 @@ export function setPrefersTempC(boolean){
         toggleDom.innerText = "F";
         r.style.setProperty("--degreePreference", '"F"');
     }
+
+    updateDisplay(currentCity);
 }
 
 
@@ -55,6 +64,7 @@ searchInput.addEventListener("keypress", (e)=>{
 });
 searchButton.addEventListener("click", ()=>{
     let cityName = searchInput.value;
+    setCurrentCity(cityName);
     updateDisplay(cityName);
 });
 
@@ -65,9 +75,4 @@ changePrefersTempCButton.addEventListener("click", ()=>{
     setPrefersTempC(!prefersTempC);
 });
 
-
-
-let data = await weatherFetcher.fetchWeatherToday('tbilisi');
-
-console.log(data);
 
