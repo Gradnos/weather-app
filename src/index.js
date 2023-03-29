@@ -41,7 +41,7 @@ export function setPrefersTempC(boolean){
 }
 
 
-export let moreInformationType = "daily";
+export let moreInformationType = "hourly";
 export function setMoreInformationType(string){
     moreInformationType = string;
 }
@@ -68,12 +68,6 @@ moreInformationButtons.forEach(button => {
     })
 });
 
-let button = document.querySelector("button");
-let i = 1;
-button.addEventListener("click", () =>{
-    transitionBodyBackground(gradientsArr[i]);
-    i++;
-});
 
 
 let searchButton = document.querySelector(".search-button");

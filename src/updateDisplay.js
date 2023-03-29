@@ -1,6 +1,7 @@
 import * as weatherFetcher from './weatherFetcher.js';
 import { prefersTempC, moreInformationType } from ".";
 import * as icons from './iconGetter.js';
+import { transitionBodyBackground, gradients } from './utility.js';
 
 let weatherContainer = document.querySelector(".currentW-cont");
 let cityNameDom = weatherContainer.querySelector(".city-name");
@@ -24,13 +25,40 @@ export async function updateDisplay(cityName){
         let location = data.location;
         let current = data.current;
 
+
+        
+        
+
         let condition = current.condition.text;
 
         let cityName = location.name;
         let localTime = location.localtime.split(" ")[1];
 
-        let tempC = current.temp_c;
-        let tempF = current.temp_f;
+
+
+
+        let astro = data.forecast.forecastday[0].astro;
+        let sunsetTime = Number(astro.sunset.split(" ")[0].split(":")[0]);
+        if(astro.sunset.split(" ")[1] === "PM") sunsetTime+=12;
+        
+
+        let sunriseTime = Number(astro.sunrise.split(" ")[0].split(":")[0]);
+        if(astro.sunrise.split(" ")[1] === "PM") sunriseTime+=12;
+
+        console.log(sunsetTime);
+        console.log(localTime.split(":")[0]);
+
+        
+        console.log(astro);
+        if(current.is_day === 1) transitionBodyBackground(gradients.middayGradient);
+        else if(Number(localTime.split(":")[0]) > sunsetTime + 1  || Number(localTime.split(":")[0]) < sunriseTime - 1) transitionBodyBackground(gradients.nightGradient);
+        else transitionBodyBackground(gradients.nightGradient);
+        
+
+
+
+        let tempC = Math.round(current.temp_c);
+        let tempF = Math.round(current.temp_f);
 
         cityNameDom.innerText = cityName;
         currentTimeDom.innerText = localTime;
@@ -116,9 +144,9 @@ export function populateDetails(data){
                 let tempSpan = document.createElement("span");
                 tempSpan.classList.add("degrees-small");
                 if(prefersTempC){
-                    tempSpan.innerText = hourData.temp_c + "°";
+                    tempSpan.innerText = Math.round(hourData.temp_c) + "°";
                 } else {
-                    tempSpan.innerText = hourData.temp_f + "°";
+                    tempSpan.innerText = Math.round(hourData.temp_f) + "°";
                 }
                 infoDiv.appendChild(tempSpan);
 
@@ -178,9 +206,9 @@ export function populateDetails(data){
                 let tempSpan = document.createElement("span");
                 tempSpan.classList.add("degrees-small");
                 if(prefersTempC){
-                    tempSpan.innerText = dayData.avgtemp_c + "°";
+                    tempSpan.innerText = Math.round(dayData.avgtemp_c) + "°";
                 } else {
-                    tempSpan.innerText = dayData.avgtemp_f + "°";
+                    tempSpan.innerText = Math.round(dayData.avgtemp_f) + "°";
                 }
                 infoDiv.appendChild(tempSpan);
 
