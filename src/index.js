@@ -26,13 +26,13 @@ export function setPrefersTempC(boolean){
     prefersTempC = boolean;
 
     if(prefersTempC === true){
-        toggleDom.classList.remove("right");
+        toggleDom.classList.remove("right-toggle");
         toggleDom.innerText = "C";
         r.style.setProperty("--degreePreference", '"C"');
     }
 
     if(prefersTempC === false){
-        toggleDom.classList.add("right");
+        toggleDom.classList.add("right-toggle");
         toggleDom.innerText = "F";
         r.style.setProperty("--degreePreference", '"F"');
     }

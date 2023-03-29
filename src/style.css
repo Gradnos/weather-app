@@ -68,7 +68,7 @@ main{
     transition-timing-function: ease-out;
 }
 
-.degree-preference-button div.right{
+.degree-preference-button div.right-toggle{
     left: calc(100% - 2.2rem);
 }
 
