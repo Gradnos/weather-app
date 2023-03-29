@@ -54,7 +54,18 @@ export async function updateDisplay(cityName){
 
 // populate more information field
 
-        let forecastDays = data.forecast.forecastday;
+        populateDetails(data);
+
+    } else{
+
+    }
+}
+
+
+
+export function populateDetails(data){
+    let forecastDays = data.forecast.forecastday;
+    let localTime = data.location.localtime.split(" ")[1];
 
 
 
@@ -121,7 +132,65 @@ export async function updateDisplay(cityName){
             }
         }
 
-    } else{
+        if(moreInformationType === "daily"){
+            moreInformationDom.innerHTML = "";
+            let currentDayId = 1;
 
-    }
-}
+            for(let i=1; i<13; i++){
+                currentDayId = i;
+
+
+                
+                let dayData = forecastDays[currentDayId]["day"];
+                let dayTime = "day";
+
+                console.log(dayData);
+
+                let condition = dayData.condition.text;
+
+                let cont = document.createElement("div");
+                cont.classList.add("weather-cont");
+
+
+            //<img class="small-weather-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/overcast-day-drizzle.svg" alt="">
+                let img = document.createElement("img");
+                img.classList.add("small-weather-icon");
+                img.src = icons[dayTime][condition.replaceAll(' ', '-')];
+                img.alt = condition;
+                cont.appendChild(img);
+
+                let infoDiv = document.createElement("div");
+                infoDiv.classList.add("info");
+                cont.appendChild(infoDiv);
+
+                let timeSpan = document.createElement("span");
+                timeSpan.classList.add("time-small");
+
+                let split = forecastDays[currentDayId]["date"].split("-");
+
+                timeSpan.innerText = split[1] + "/" + split[2];
+                infoDiv.appendChild(timeSpan);
+
+                let dashSpan = document.createElement("span");
+                dashSpan.innerText = " - ";
+                infoDiv.appendChild(dashSpan);
+                
+                let tempSpan = document.createElement("span");
+                tempSpan.classList.add("degrees-small");
+                if(prefersTempC){
+                    tempSpan.innerText = dayData.avgtemp_c + "°";
+                } else {
+                    tempSpan.innerText = dayData.avgtemp_f + "°";
+                }
+                infoDiv.appendChild(tempSpan);
+
+
+                let hoverConditionDiv = document.createElement("div");
+                hoverConditionDiv.classList.add("hover-condition");
+                hoverConditionDiv.innerText = condition;
+                infoDiv.appendChild(hoverConditionDiv);
+
+                moreInformationDom.appendChild(cont);
+            }
+        }
+};

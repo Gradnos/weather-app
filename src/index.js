@@ -41,7 +41,7 @@ export function setPrefersTempC(boolean){
 }
 
 
-export let moreInformationType = "hourly";
+export let moreInformationType = "daily";
 export function setMoreInformationType(string){
     moreInformationType = string;
 }

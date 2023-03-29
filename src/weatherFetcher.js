@@ -15,7 +15,7 @@ export async function fetchWeatherToday(cityName){
 }
 
 export async function fetchWeatherForecast(cityName){
-    const response = await fetch(`${weatherBaseUrl}forecast.json?key=${KEY}&q=${cityName}&days=7`);
+    const response = await fetch(`${weatherBaseUrl}forecast.json?key=${KEY}&q=${cityName}&days=14`);
     let data = await response.json();
     
     //returns [true, error data] if response isnt ok
