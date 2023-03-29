@@ -4,9 +4,7 @@ import * as weatherFetcher from './weatherFetcher.js';
 import { updateDisplay } from "./updateDisplay";
 import { populateDetails } from "./updateDisplay";
 
-transitionBodyBackground(gradientsArr[0]);
 
-console.log(gradientsArr[0]);
 
 let r = document.querySelector(':root');
 
@@ -79,7 +77,6 @@ searchInput.addEventListener("keypress", (e)=>{
 });
 searchButton.addEventListener("click", ()=>{
     let cityName = searchInput.value;
-    setCurrentCity(cityName);
     updateDisplay(cityName);
 });
 
@@ -90,4 +87,6 @@ changePrefersTempCButton.addEventListener("click", ()=>{
     setPrefersTempC(!prefersTempC);
 });
 
+
+updateDisplay("tbilisi");
 

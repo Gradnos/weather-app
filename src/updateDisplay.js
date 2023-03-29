@@ -2,6 +2,7 @@ import * as weatherFetcher from './weatherFetcher.js';
 import { prefersTempC, moreInformationType } from ".";
 import * as icons from './iconGetter.js';
 import { transitionBodyBackground, gradients } from './utility.js';
+import { setCurrentCity } from '.';
 
 let weatherContainer = document.querySelector(".currentW-cont");
 let cityNameDom = weatherContainer.querySelector(".city-name");
@@ -10,7 +11,7 @@ let currentIconDom = weatherContainer.querySelector(".current-weather-icon");
 let currentDegreeDom = weatherContainer.querySelector(".current-weather-degree");
 let currentConditionDom = weatherContainer.querySelector(".current-condition");
 let moreInformationDom = document.querySelector(".details-cont");
-
+let searchError = document.querySelector(".search-error");
 
 
 export async function updateDisplay(cityName){
@@ -19,8 +20,13 @@ export async function updateDisplay(cityName){
 
     let forecastResponse = await weatherFetcher.fetchWeatherForecast(cityName);
 
-    console.log(forecastResponse);
+    let NAME = cityName;
+
     if(forecastResponse.ok){
+        console.log("setcity")
+        setCurrentCity(NAME);
+        searchError.classList.remove("visible");
+
         let data = forecastResponse.data;
         let location = data.location;
         let current = data.current;
@@ -51,8 +57,8 @@ export async function updateDisplay(cityName){
         
         console.log(astro);
         if(current.is_day === 1) transitionBodyBackground(gradients.middayGradient);
-        else if(Number(localTime.split(":")[0]) > sunsetTime + 1  || Number(localTime.split(":")[0]) < sunriseTime - 1) transitionBodyBackground(gradients.nightGradient);
-        else transitionBodyBackground(gradients.nightGradient);
+        else if(Number(localTime.split(":")[0]) > sunsetTime + 2  || Number(localTime.split(":")[0]) < sunriseTime - 2) transitionBodyBackground(gradients.nightGradient);
+        else transitionBodyBackground(gradients.eveningGradient);
         
 
 
@@ -85,7 +91,12 @@ export async function updateDisplay(cityName){
         populateDetails(data);
 
     } else{
+        console.log("err");
+        let data = forecastResponse.data;
+        let errorMessage = data.error.message;
 
+        searchError.innerText = errorMessage;
+        searchError.classList.add("visible");
     }
 }
 
