@@ -2,7 +2,7 @@ import "./style.css"
 import { gradients, gradientsArr, transitionBodyBackground } from "./utility";
 import * as weatherFetcher from './weatherFetcher.js';
 import { updateDisplay } from "./updateDisplay";
-
+import { populateDetails } from "./updateDisplay";
 
 transitionBodyBackground(gradientsArr[0]);
 
@@ -18,7 +18,7 @@ export let currentCity = "tbilisi";
 export function setCurrentCity(city){
     currentCity = city;
 }
-
+ 
 
 
 export let prefersTempC = true;
@@ -46,6 +46,27 @@ export function setMoreInformationType(string){
     moreInformationType = string;
 }
 
+let moreInformationButtons = Array.from(document.querySelector(".details-buttons").children);
+
+
+
+
+moreInformationButtons.forEach(button => {
+    button.addEventListener("click" , ()=>{
+        button.classList.add("selected");
+        let currentType = button.dataset.type;
+        setMoreInformationType(currentType);
+        updateDisplay(currentCity);
+
+
+        moreInformationButtons.forEach(btn =>{
+            let btnType = btn.dataset.type;
+            if(currentType !== btnType){
+                btn.classList.remove("selected");
+            }
+        });
+    })
+});
 
 let button = document.querySelector("button");
 let i = 1;
