@@ -5,7 +5,10 @@ module.exports = {
   mode: "development",
   entry: {
     index: './src/index.js',
-    weatherFetcher: './src/weatherFetcher.js'
+    weatherFetcher: './src/weatherFetcher.js',
+    iconGetter: './src/iconGetter.js',
+    updateDisplay: './src/updateDisplay',
+    utility: './src/utility',
   },
   output: {
     filename: '[name].bundle.js',
