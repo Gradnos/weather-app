@@ -1,7 +1,7 @@
 import { KEY } from "./API-keys";
 import { catchEm } from "./utility";
 
-const weatherBaseUrl = 'http://api.weatherapi.com/v1/';
+const weatherBaseUrl = 'https://api.weatherapi.com/v1/';
 
 
 export async function fetchWeatherToday(cityName){
