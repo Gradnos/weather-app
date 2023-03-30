@@ -77,6 +77,7 @@ searchInput.addEventListener("keypress", (e)=>{
 });
 searchButton.addEventListener("click", ()=>{
     let cityName = searchInput.value;
+    if(cityName === "") return;
     updateDisplay(cityName);
 });
 
