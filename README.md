@@ -1,6 +1,6 @@
 
 # <div style="text-align:center">A Weather project built with weatherAPI <div>
- <div style="text-align:center"><img alt="banner" src="./readme-files/banner.png" /></div>
+ <div align="center" style="text-align:center"><img alt="banner" src="./readme-files/banner.png" /></div>
 
 <br>
 
@@ -39,7 +39,6 @@
 # What I Learned
 
 - Using an API
-- promises
 - async
 - await
 - extracting information from complex objects
